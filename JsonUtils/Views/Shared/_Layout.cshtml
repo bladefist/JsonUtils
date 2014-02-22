@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,48 +14,73 @@
     <link href="/Content/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="/Content/bootstrap-theme.min.css" rel="stylesheet">
-@*    <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" type="text/css">
+    @*    <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" type="text/css">
       <link href="/Content/prettify.css" type="text/css">*@
 
-      <link href="/Content/Site.css" rel="stylesheet">
+    <link href="/Content/Site.css" rel="stylesheet">
     <link href="/Content/SunLight/themes/sunlight.default.css" type="text/css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body role="document">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <header class="navbar navbar-default navbar-static-top bs-docs-nav" id="top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="../" class="navbar-brand">JSON Utils</a>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <a href="/">Generate Classes</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<body role="document">
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-48278343-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <header class="navbar navbar-default navbar-static-top bs-docs-nav" id="top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../" class="navbar-brand">JSON Utils</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/">Generate Classes</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Powered By<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://jsonclassgenerator.codeplex.com/">JSON Class Generator</a></li>
+                            <li><a href="http://json.codeplex.com/">JSON.Net</a></li>
+                            <li><a href="http://sunlightjs.com/">SunLight</a></li>
+                            <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                            <li><a href="https://github.com/josdejong/jsoneditor/">JSON Editor</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <div class="container theme-showcase" role="main">
-     
+
         @RenderBody()
-    </div>   
+    </div>
     <script src="/Scripts/bootstrap.min.js"></script>
-      
+
     @RenderSection("scripts", required: false)
 </body>
-  </body>
+</body>
 </html>
