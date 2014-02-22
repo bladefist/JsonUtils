@@ -18,17 +18,36 @@ namespace JsonUtils.Controllers
     {
         //
         // GET: /Home/
-
-        public ActionResult Index()
+        public ActionResult Bookmarklet()
+        {
+            return View();
+        }
+        public ActionResult Index(string url)
         {
             var vm = new IndexViewModel();
 
-            vm.JSON = @"{""employees"": [
+            if (!string.IsNullOrEmpty(url))
+            {
+                try
+                {
+                    vm.JSON = new WebClient().DownloadString(url);
+                }
+                catch (Exception ex)
+                {
+                    vm.Error = true;
+                    vm.ErrorNo = 3;
+                }
+            }
+
+            if (string.IsNullOrEmpty(vm.JSON))
+            {
+                vm.JSON = @"{""employees"": [
                         {  ""firstName"":""John"" , ""lastName"":""Doe"" }, 
                         {  ""firstName"":""Anna"" , ""lastName"":""Smith"" }, 
                         { ""firstName"": ""Peter "" ,  ""lastName "": ""Jones "" }
                         ]
                         }".Trim();
+            }
 
             vm.ClassName = "Example";
             vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, true));
