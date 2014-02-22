@@ -4,18 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="JSON Utils is a site for generating C# & VB.Net classes from JSON. It will also clean up your JSON and show a data viewer to assist you while you are developing">
+    <meta name="description" content="JSON Utils is a site for generating C#, VB.Net, and Javascript classes from JSON. It will also clean up your JSON and show a data viewer to assist you while you are developing">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>JSON Utils: Generate C# & VB.Net from JSON</title>
     @Styles.Render("~/Content/css")
-    <!-- Bootstrap core CSS -->
     <link href="/Content/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
     <link href="/Content/bootstrap-theme.min.css" rel="stylesheet">
-    @*    <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" type="text/css">
-      <link href="/Content/prettify.css" type="text/css">*@
 
     <link href="/Content/Site.css" rel="stylesheet">
     <link href="/Content/SunLight/themes/sunlight.default.css" type="text/css" rel="stylesheet" />
@@ -59,6 +55,9 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#why-this">Why?</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Powered By<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -77,6 +76,29 @@
     <div class="container theme-showcase" role="main">
 
         @RenderBody()
+    </div>
+
+    <div class="modal fade" id="why-this" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Why make this?</h4>
+                </div>
+                <div class="modal-body">
+                    <b><p>Lots of tools out there already, why do we need another?</p></b>
+                    I was tired of having multiple tabs open to convert objects, then another to view the data, and another to clean it up. I wanted one tool where I could see everything side by side. 
+
+        Hope you enjoy.
+                    <p></p>
+                    <b><p>Can you add more stuff?</p></b>
+                    I'd love to.  Send your bugs and requests <a href="https://docs.google.com/spreadsheet/viewform?formkey=dDJiNENOVG5xT3JhcVJtWDJXUTlNQUE6MA">Here.</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="/Scripts/bootstrap.min.js"></script>
 
