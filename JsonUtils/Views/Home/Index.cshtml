@@ -1,0 +1,194 @@
+﻿@model Core.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+
+    string codeeditorclass = "csharp";
+    
+    if (Model.Language == 2)
+    {
+        codeeditorclass = "vb";
+    }
+    else if (Model.Language == 3)
+    {
+        codeeditorclass = "javascript";
+    }
+}
+
+@if (Model.Error)
+{
+<div class="alert alert-dismissable alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    @if (Model.ErrorNo == 1)
+    {
+        <text>Class Name is Required</text>
+    }
+    else if (Model.ErrorNo == 2)
+    {
+        <text>JSON or a valid URL is required</text>
+    }
+    else if (Model.ErrorNo == 3)
+    {
+        <text>Invalid JSON Syntax</text>
+    }
+    else if (Model.ErrorNo == 3)
+    {
+        <text>Invalid URL. Unable to download JSON data</text>
+    }
+</div>
+}
+
+<link rel="stylesheet" type="text/css" href="/Content/jsoneditor/jsoneditor-min.css">
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form form-horizontal" action="/" method="post">
+
+
+        <div class="control-group">
+            <label class="control-label">Language</label>
+            <div class="col-md-12">
+                <div class="radio-inline">
+                    <label>
+                        @Html.RadioButton("Language", 1, Model.Language == 1)
+                        C#
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        @Html.RadioButton("Language", 2, Model.Language == 2)
+                        VB.Net
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        @Html.RadioButton("Language", 3, Model.Language == 3)
+                        Javascript
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">Class Name</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.ClassName, new { placeholder = "Class Name", @class = "form-control" })                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="col-md-12">
+                        <div class="radio-inline">
+                            <label>
+                                @Html.CheckBox("Nest", Model.Nest)
+                                Add Namespace
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">JSON text or URL</label>
+            <div class="controls">
+                @Html.TextAreaFor(m => m.JSON, new { @class = "form-control", rows = 5 })
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+        </form>
+    </div>
+</div>
+
+<div style="height: 20px"></div>
+
+<a name="result"></a>
+
+@if (!string.IsNullOrEmpty(Model.CodeObjects))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">JSON Utilities</h3>
+                    <span class="pull-right">
+                        <!-- Tabs -->
+                        <ul class="nav panel-tabs">
+                            <li class="active"><a href="#jsonobjects" data-toggle="tab">Class Objects</a></li>
+                            <li><a href="#jsoneditor" data-toggle="tab">Viewer</a></li>
+                            <li><a href="#jsonbeautiful" data-toggle="tab">Beutified</a></li>
+                        </ul>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="jsonobjects">
+                            <pre class="sunlight-highlight-@codeeditorclass">@Html.Raw(Model.CodeObjects)</pre>
+                        </div>
+                        <div class="tab-pane" id="jsoneditor">
+                        </div>
+                        <div class="tab-pane" id="jsonbeautiful">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    <div id="json-text" style="display:none;">
+        @Model.JSON
+    </div>
+}
+
+<script type="text/javascript" src="/Content/SunLight/sunlight-min.js"></script>
+<script type="text/javascript" src="/Content/SunLight/sunlight-all-min.js"></script>
+
+<script type="text/javascript" src="/Content/jsoneditor/jsoneditor-min.js"></script>
+
+<script type="text/javascript">
+
+    @if (Model.Language == 3)
+    {
+        <text>    
+            $('#jsonobjects > pre').text('var myObject = ' + JSON.stringify(JSON.parse($('#json-text').text()), null, "\t") + ';');
+        </text>
+    }
+
+    Sunlight.highlightAll();
+
+    var container = document.getElementById("jsoneditor");
+    var options = {
+        mode: 'tree'
+    };
+    var editor = new jsoneditor.JSONEditor(container, options);
+
+    var obj = JSON.parse($('#json-text').text());
+    editor.set(obj);
+
+    editor.expandAll();
+
+
+    var beautifulBox = document.getElementById("jsonbeautiful");
+    var options2 = {
+        mode: 'text',
+        indentation: 2
+    };
+    var viewer = new jsoneditor.JSONEditor(beautifulBox, options2);
+    viewer.set(obj);
+
+    $('#jsonbeautiful').height($('#jsoneditor').height());
+
+    
+
+</script>
+

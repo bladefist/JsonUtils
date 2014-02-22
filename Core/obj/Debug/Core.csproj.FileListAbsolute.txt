@@ -1,0 +1,5 @@
+E:\Dev\JsonUtils\Core\bin\Debug\Core.dll
+E:\Dev\JsonUtils\Core\bin\Debug\Core.pdb
+E:\Dev\JsonUtils\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+E:\Dev\JsonUtils\Core\obj\Debug\Core.dll
+E:\Dev\JsonUtils\Core\obj\Debug\Core.pdb
