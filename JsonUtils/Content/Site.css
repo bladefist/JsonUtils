@@ -1,4 +1,5 @@
-﻿/*Panel tabs*/
+﻿.hide-h1 { display: none; }
+/*Panel tabs*/
 .panel-tabs {
     position: relative;
     bottom: 30px;
