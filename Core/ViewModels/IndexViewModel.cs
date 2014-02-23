@@ -16,6 +16,7 @@ namespace Core.ViewModels
         public string CodeObjects { get; set; }
 
         public bool Nest { get; set; }
+        public bool Pascal { get; set; }
 
         public bool Error { get; set; }
 
