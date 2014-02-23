@@ -50,7 +50,7 @@ namespace JsonUtils.Controllers
             }
 
             vm.ClassName = "Example";
-            vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, true));
+            vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, true, false));
             vm.Language = 1;
             vm.Nest = true;
 
@@ -96,7 +96,7 @@ namespace JsonUtils.Controllers
             try
             {
                 if (model.Language != 3)
-                    model.CodeObjects = Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest));
+                    model.CodeObjects = Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal));
                 else
                     model.CodeObjects = "javascript";
             }
@@ -117,7 +117,7 @@ namespace JsonUtils.Controllers
           //  new JavaCodeWriter()
         };
 
-        private string Prepare(string JSON, string classname, int language, bool nest)
+        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -147,7 +147,7 @@ namespace JsonUtils.Controllers
             gen.SecondaryNamespace = null;
             gen.UseProperties = true;
             gen.MainClass = classname;
-            gen.UsePascalCase = false;
+            gen.UsePascalCase = pascal;
             gen.UseNestedClasses = nest;
             gen.ApplyObfuscationAttributes = false;
             gen.SingleFile = true;
