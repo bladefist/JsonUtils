@@ -58,10 +58,9 @@ namespace JsonUtils.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Index(IndexViewModel model)
         {
-
-
             if (string.IsNullOrEmpty(model.ClassName))
             {
                 model.Error = true;
