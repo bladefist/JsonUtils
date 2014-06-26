@@ -51,10 +51,11 @@ namespace JsonUtils.Controllers
 
             vm.ClassName = "Example";
             vm.PropertyAttribute = "None";
+            vm.Nest = false;
 
             try
             {
-                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, true, false, vm.PropertyAttribute));
+                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.PropertyAttribute));
             }
             catch (Exception ex)
             {
@@ -62,7 +63,6 @@ namespace JsonUtils.Controllers
                 vm.ErrorNo = 3;
             }
             vm.Language = 1;
-            vm.Nest = true;
 
             return View(vm);
         }
