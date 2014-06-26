@@ -30,7 +30,8 @@ E:\Dev\JsonUtils\JsonUtils\obj\Debug\JsonUtils.csprojResolveAssemblyReference.ca
 E:\Dev\JsonUtils\JsonUtils\obj\Debug\JsonUtils.dll
 E:\Dev\JsonUtils\JsonUtils\obj\Debug\JsonUtils.pdb
 E:\Dev\JsonUtils\JsonUtils\bin\Core.dll
-E:\Dev\JsonUtils\JsonUtils\bin\Xamasoft.JsonClassGenerator.dll
 E:\Dev\JsonUtils\JsonUtils\bin\System.Data.Entity.Design.PluralizationServices.dll
 E:\Dev\JsonUtils\JsonUtils\bin\Xamasoft.JsonClassGenerator.pdb
 E:\Dev\JsonUtils\JsonUtils\bin\Core.pdb
+E:\Dev\JsonUtils\JsonUtils\bin\Xamasoft.JsonClassGenerator.dll
+E:\Dev\JsonUtils\JsonUtils\bin\JsonUtils.dll.config

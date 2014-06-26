@@ -30,7 +30,7 @@
     {
         <text>Invalid JSON Syntax</text>
     }
-    else if (Model.ErrorNo == 3)
+    else if (Model.ErrorNo == 4)
     {
         <text>Invalid URL. Unable to download JSON data or URL is not valid JSON</text>
     }
@@ -94,6 +94,12 @@
                                 Pascal Case
                             </label>
                         </div>
+                    </div>                    
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Property Attributes</label>
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(m => m.PropertyAttribute, Model.PropertyAttributeOptions, new { @class = "form-control" })                        
                     </div>
                 </div>
             </div>            

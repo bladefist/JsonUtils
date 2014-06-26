@@ -35,7 +35,7 @@ namespace JsonUtils.Controllers
                 catch (Exception ex)
                 {
                     vm.Error = true;
-                    vm.ErrorNo = 3;
+                    vm.ErrorNo = 4;
                 }
             }
 
@@ -50,7 +50,17 @@ namespace JsonUtils.Controllers
             }
 
             vm.ClassName = "Example";
-            vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, true, false));
+            vm.PropertyAttribute = "None";
+
+            try
+            {
+                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, true, false, vm.PropertyAttribute));
+            }
+            catch (Exception ex)
+            {
+                vm.Error = true;
+                vm.ErrorNo = 3;
+            }
             vm.Language = 1;
             vm.Nest = true;
 
@@ -95,7 +105,7 @@ namespace JsonUtils.Controllers
             try
             {
                 if (model.Language != 3)
-                    model.CodeObjects = Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal));
+                    model.CodeObjects = Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal, model.PropertyAttribute));
                 else
                     model.CodeObjects = "javascript";
             }
@@ -104,6 +114,7 @@ namespace JsonUtils.Controllers
                 model.Error = true;
                 model.ErrorNo = 3;               
             }
+            
             return View(model);
         }
 
@@ -116,7 +127,7 @@ namespace JsonUtils.Controllers
           //  new JavaCodeWriter()
         };
 
-        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal)
+        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -147,13 +158,16 @@ namespace JsonUtils.Controllers
             gen.UseProperties = true;
             gen.MainClass = classname;
             gen.UsePascalCase = pascal;
+            gen.PropertyAttribute = propertyAttribute;
+
             gen.UseNestedClasses = nest;
             gen.ApplyObfuscationAttributes = false;
             gen.SingleFile = true;
             gen.ExamplesInDocumentation = false;
-
+            
             gen.TargetFolder = null;
             gen.SingleFile = true;
+
             using (var sw = new StringWriter())
             {
                 gen.OutputStream = sw;

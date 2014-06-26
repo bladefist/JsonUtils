@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Core.ViewModels
 {
@@ -10,6 +11,19 @@ namespace Core.ViewModels
     {
         public string ClassName { get; set; }
         public string JSON { get; set; }
+
+        public List<SelectListItem> PropertyAttributeOptions
+        {
+            get {
+                return new List<SelectListItem>() { 
+                    new SelectListItem() { Text = "None", Value = "None" },
+                    new SelectListItem() { Text = "DataMember", Value = "DataMember" },
+                    new SelectListItem() { Text = "JsonProperty", Value = "JsonProperty" }
+                };
+            }
+        }
+
+        public string PropertyAttribute { get; set; }
 
         public int Language { get; set; }
 
