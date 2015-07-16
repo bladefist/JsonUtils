@@ -36,8 +36,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity.Design.PluralizationServices">
-      <HintPath>..\References\System.Data.Entity.Design.PluralizationServices.dll</HintPath>
+    <Reference Include="System.Data.Entity.Design.PluralizationServices, Version=4.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Data.Entity.Design.PluralizationService\System.Data.Entity.Design.PluralizationServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
