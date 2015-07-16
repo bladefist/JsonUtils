@@ -313,7 +313,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\3rd Party Tools\JsonClassGenerator\JsonCSharpClassGeneratorLib\JsonClassGeneratorLib.csproj">
+    <ProjectReference Include="..\JsonCSharpClassGeneratorLib\JsonClassGeneratorLib.csproj">
       <Project>{7bef7eaa-de37-40fb-bd33-3def0685031f}</Project>
       <Name>JsonClassGeneratorLib</Name>
     </ProjectReference>
