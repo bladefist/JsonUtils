@@ -268,6 +268,8 @@
     <Content Include="Content\JsonEditor\LICENSE" />
     <Content Include="Content\JsonEditor\NOTICE" />
     <Content Include="Content\JsonEditor\README.md" />
+    <None Include="Properties\PublishProfiles\JsonUtils %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\JsonUtils.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -315,10 +317,6 @@
       <Project>{7bef7eaa-de37-40fb-bd33-3def0685031f}</Project>
       <Name>JsonClassGeneratorLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{af0fb187-3b25-4939-be35-7b0097f0c520}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -338,9 +336,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>25592</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://test.jsonutils.com</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://test.jsonutils.com</IISAppRootUrl>
+          <IISUrl>http://localhost:25592/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

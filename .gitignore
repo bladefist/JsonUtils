@@ -1,0 +1,8 @@
+JsonUtils/obj/
+Core/obj/
+JsonUtils/Properties/PublishProfiles/
+Core/bin/
+JsonUtils/bin/
+JsonUtils/JsonUtils.csproj.user
+JsonUtils.v11.suo
+JsonUtils.v12.suo

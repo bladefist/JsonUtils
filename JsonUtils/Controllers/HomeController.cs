@@ -123,8 +123,7 @@ namespace JsonUtils.Controllers
         private readonly static ICodeWriter[] CodeWriters = new ICodeWriter[] {
             new CSharpCodeWriter(),
             new VisualBasicCodeWriter(),
-            new TypeScriptCodeWriter(),
-          //  new JavaCodeWriter()
+            new TypeScriptCodeWriter()
         };
 
         private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute)
@@ -140,8 +139,10 @@ namespace JsonUtils.Controllers
                 writer = new CSharpCodeWriter();
             else if (language == 2)
                 writer = new VisualBasicCodeWriter();
-            else
+            else if (language == 3)
                 writer = new TypeScriptCodeWriter();
+            else 
+                writer = new SqlCodeWriter();
 
             var gen = new JsonClassGenerator();
             gen.Example = JSON;
@@ -192,8 +193,6 @@ namespace JsonUtils.Controllers
 
                 if (value is JToken && ((JToken)value).Type == JTokenType.Object)
                     R(value);
-
-
             }
         }
 

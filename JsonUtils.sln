@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonUtils", "JsonUtils\JsonUtils.csproj", "{9541FA6B-CD37-4F9C-823C-A6AEE913C22F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonClassGeneratorLib", "..\3rd Party Tools\JsonClassGenerator\JsonCSharpClassGeneratorLib\JsonClassGeneratorLib.csproj", "{7BEF7EAA-DE37-40FB-BD33-3DEF0685031F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{AF0FB187-3B25-4939-BE35-7B0097F0C520}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{7BEF7EAA-DE37-40FB-BD33-3DEF0685031F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BEF7EAA-DE37-40FB-BD33-3DEF0685031F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BEF7EAA-DE37-40FB-BD33-3DEF0685031F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF0FB187-3B25-4939-BE35-7B0097F0C520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF0FB187-3B25-4939-BE35-7B0097F0C520}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF0FB187-3B25-4939-BE35-7B0097F0C520}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF0FB187-3B25-4939-BE35-7B0097F0C520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
