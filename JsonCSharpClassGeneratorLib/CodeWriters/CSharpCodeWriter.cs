@@ -211,8 +211,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                     {
                         if (config.PropertyAttribute == "DataMember")                        
                             sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(Name=\"{0}\")]", field.JsonMemberName);
-                        //else 
-                            //sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(\"{0}\")]", field.JsonMemberName);
+                        else
+                            sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(\"{0}\")]", field.JsonMemberName);
                     }
                 }
 
