@@ -73,8 +73,9 @@ namespace JsonUtils.Controllers
         {
             if (string.IsNullOrEmpty(model.ClassName))
             {
-                model.Error = true;
-                model.ErrorNo = 1;
+                //model.Error = true;
+                //model.ErrorNo = 1;
+                model.ClassName = "RootObject";
             }
             else if (string.IsNullOrEmpty(model.JSON))
             {
@@ -150,7 +151,7 @@ namespace JsonUtils.Controllers
             gen.CodeWriter = writer;
             gen.ExplicitDeserialization = false;
             if (nest)
-                gen.Namespace = "JSONUtils." + classname;
+                gen.Namespace = "JSONUtils";
             else
                 gen.Namespace = null;
 

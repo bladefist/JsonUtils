@@ -80,7 +80,7 @@ namespace Xamasoft.JsonClassGenerator
             Types = new List<JsonType>();
             Names.Add(MainClass);
             var rootType = new JsonType(this, examples[0]);
-            rootType.IsRoot = true;
+            rootType.IsRoot = false;
             rootType.AssignName(MainClass);
             GenerateClass(examples, rootType);
 
