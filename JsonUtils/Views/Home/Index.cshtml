@@ -54,7 +54,7 @@
         <h1 class="hide-h1">Generate classes from JSON - Json to C#, Json to VB.net, and JSON Viewer</h1>
         <div class="control-group">
             <label class="control-label">Language of classes to generate</label>
-            <div class="col-md-12">
+            <div class="col-md-12" id="languages">
                 <div class="radio-inline">
                     <label>
                         @Html.RadioButton("Language", 1, Model.Language == 1)
@@ -214,7 +214,44 @@
 
     $('#jsonbeautiful').height($('#jsoneditor').height());
 
-    
+
+    function disableAttributes(languageId) {
+        resetAttributes();
+        try {
+            languageId = parseInt(languageId);
+        } catch (e) {
+            languageId = 0;
+        }
+        switch (languageId) {
+            case 3: //Javascript
+                $('#ClassName').attr('disabled', 'disabled');
+                $('#Nest').attr('disabled', 'disabled');
+                $('#Pascal').attr('disabled', 'disabled');
+                $('#PropertyAttribute').attr('disabled', 'disabled');
+            break;
+            case 4: //Sql
+                $('#Nest').attr('disabled', 'disabled');
+                $('#PropertyAttribute').attr('disabled', 'disabled');
+            break;
+            default:
+                
+        }
+    }
+
+    function resetAttributes() {
+        $('#ClassName').removeAttr('disabled');
+        $('#Nest').removeAttr('disabled');
+        $('#Pascal').removeAttr('disabled');
+        $('#PropertyAttribute').removeAttr('disabled');
+    }
+
+    $(document).ready(function () {
+        //Language radio button type click
+        $("#languages input[name='Language']").click(function () {
+            var selectedValue = $('input:radio[name=Language]:checked').val();
+            disableAttributes(selectedValue);
+        });
+    });
 
 </script>
 
