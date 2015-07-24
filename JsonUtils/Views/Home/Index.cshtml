@@ -85,6 +85,12 @@
                         Java
                     </label>
                 </div>
+                <div class="radio-inline">
+                    <label>
+                        @Html.RadioButton("Language", 6, Model.Language == 6)
+                        PHP
+                    </label>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -246,6 +252,12 @@
                 $('#PropertyAttribute').attr('disabled', 'disabled');
             break;
             case 5: //Java
+                $('#Nest').attr('disabled', 'disabled');
+                $('#Pascal').attr('disabled', 'disabled');
+                $('#PropertyAttribute').attr('disabled', 'disabled');
+                $("#div-properties").show();
+                break;
+            case 6: //PHP
                 $('#Nest').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
