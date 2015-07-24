@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeWriters\PhpCodeWriter.cs" />
     <Compile Include="CodeWriters\SqlCodeWriter.cs" />
     <Compile Include="CodeWriters\JavaCodeWriter.cs" />
     <Compile Include="CodeWriters\TypeScriptCodeWriter.cs" />
