@@ -136,7 +136,8 @@ namespace Xamasoft.JsonClassGenerator
                 if (UseNamespaces && inNamespace && rootNamespace != type.IsRoot && SecondaryNamespace != null) { CodeWriter.WriteNamespaceEnd(this, sw, rootNamespace); inNamespace = false; }
                 if (UseNamespaces && !inNamespace) { CodeWriter.WriteNamespaceStart(this, sw, type.IsRoot); inNamespace = true; rootNamespace = type.IsRoot; }
 
-                if (type.IsRoot && CodeWriter.DisplayName == "SQL")
+                //dont generate root object for SQL
+                if (type.AssignedName == MainClass && CodeWriter.DisplayName == "SQL")
                     continue;
 
                 CodeWriter.WriteClass(this, sw, type);
