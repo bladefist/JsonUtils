@@ -106,7 +106,12 @@ namespace JsonUtils.Controllers
             try
             {
                 if (model.Language != 3)
-                    model.CodeObjects = Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal, model.PropertyAttribute));
+                {
+
+                    model.CodeObjects =
+                        Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal,
+                        model.PropertyAttribute, (model.Language == 5) && model.Properties));
+                }
                 else
                     model.CodeObjects = "javascript";
             }
@@ -127,7 +132,7 @@ namespace JsonUtils.Controllers
             new TypeScriptCodeWriter()
         };
 
-        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute)
+        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, bool hasGetSet=false)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -142,8 +147,10 @@ namespace JsonUtils.Controllers
                 writer = new VisualBasicCodeWriter();
             else if (language == 3)
                 writer = new TypeScriptCodeWriter();
-            else 
+            else if(language == 4)
                 writer = new SqlCodeWriter();
+            else
+                writer = new JavaCodeWriter();
 
             var gen = new JsonClassGenerator();
             gen.Example = JSON;
@@ -157,7 +164,7 @@ namespace JsonUtils.Controllers
 
             gen.NoHelperClass = false;
             gen.SecondaryNamespace = null;
-            gen.UseProperties = true;
+            gen.UseProperties = language != 5 || hasGetSet;
             gen.MainClass = classname;
             gen.UsePascalCase = pascal;
             gen.PropertyAttribute = propertyAttribute;

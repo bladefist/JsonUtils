@@ -31,6 +31,7 @@ namespace Core.ViewModels
 
         public bool Nest { get; set; }
         public bool Pascal { get; set; }
+        public bool Properties { get; set; }
 
         public bool Error { get; set; }
 

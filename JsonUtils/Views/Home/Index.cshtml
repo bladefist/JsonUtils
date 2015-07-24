@@ -79,6 +79,12 @@
                         SQL Table
                     </label>
                 </div>
+                <div class="radio-inline">
+                    <label>
+                        @Html.RadioButton("Language", 5, Model.Language == 5)
+                        Java
+                    </label>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -104,6 +110,12 @@
                             <label>
                                 @Html.CheckBox("Pascal", Model.Pascal)
                                 Pascal Case
+                            </label>
+                        </div>
+                        <div class="check-inline" id="div-properties">
+                            <label>
+                                @Html.CheckBox("Properties", Model.Properties)
+                                Get &amp; Set
                             </label>
                         </div>
                     </div>                    
@@ -233,6 +245,12 @@
                 $('#Nest').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
             break;
+            case 5: //Java
+                $('#Nest').attr('disabled', 'disabled');
+                $('#Pascal').attr('disabled', 'disabled');
+                $('#PropertyAttribute').attr('disabled', 'disabled');
+                $("#div-properties").show();
+                break;
             default:
                 
         }
@@ -243,6 +261,7 @@
         $('#Nest').removeAttr('disabled');
         $('#Pascal').removeAttr('disabled');
         $('#PropertyAttribute').removeAttr('disabled');
+        $("#div-properties").hide();
     }
 
     $(document).ready(function () {
