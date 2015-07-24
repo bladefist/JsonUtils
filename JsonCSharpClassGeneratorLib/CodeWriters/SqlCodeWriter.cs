@@ -81,7 +81,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
         public void WriteNamespaceEnd(IJsonClassGeneratorConfig config, TextWriter sw, bool root)
         {
-            sw.WriteLine("}");
+            //sw.WriteLine("}");
         }
 
         public void WriteClass(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type)
