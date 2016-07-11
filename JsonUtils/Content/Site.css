@@ -38,3 +38,22 @@
     background-color: rgba(255,255,255, .23);
     border-bottom-color: transparent;
 }
+
+.copier {
+    background-image: url('Images/copy-32px.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 4px;
+    width: 40px;
+    height: 34px;
+}
+
+.copier-hover {
+    cursor: pointer; 
+    cursor: hand;
+    background-image: url('Images/copy-32px-color.png');
+}
+
+.popover {
+    background-color: #2c3e50;
+}
