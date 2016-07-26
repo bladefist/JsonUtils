@@ -116,7 +116,6 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
         public void WriteClass(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type)
         {
 
-
             var visibility = config.InternalVisibility ? "internal" : "public";
 
             if (config.UseNestedClasses)
