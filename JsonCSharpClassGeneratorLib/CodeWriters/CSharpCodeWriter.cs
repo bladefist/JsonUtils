@@ -86,7 +86,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
             if (config.UseNestedClasses)
             {
-                sw.WriteLine("    {0} class {1}", config.InternalVisibility ? "internal" : "public", config.MainClass);
+                sw.WriteLine("    {0}{1} class {2}", config.InternalVisibility ? "internal" : "public", config.UseFinalClasses ? " sealed":"", config.MainClass);
                 sw.WriteLine("    {");
             }
         }
@@ -130,7 +130,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
                     if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("        " + NoRenameAttribute);
                     if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("        " + NoPruneAttribute);
-                    sw.WriteLine("        {0} class {1}", visibility, type.AssignedName);
+                    sw.WriteLine("        {0}{1} class {2}", visibility,config.UseFinalClasses ? " sealed":"", type.AssignedName);
                     sw.WriteLine("        {");
                 }
             }
@@ -143,7 +143,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
                 if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("    " + NoRenameAttribute);
                 if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("    " + NoPruneAttribute);
-                sw.WriteLine("    {0} class {1}", visibility, type.AssignedName);
+                sw.WriteLine("    {0}{1} class {1}", visibility,config.UseFinalClasses ? " sealed":"", type.AssignedName);
                 sw.WriteLine("    {");
             }
 
