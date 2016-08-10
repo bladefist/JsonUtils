@@ -72,7 +72,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
             //    if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("    " + NoRenameAttribute);
             //    if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("    " + NoPruneAttribute);
-            sw.WriteLine("{0}class {1}", config.UseFinalClasses ? "final " : "", type.AssignedName);
+            sw.WriteLine("class {0}", type.AssignedName);
             sw.WriteLine("{");
             //}
 

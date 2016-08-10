@@ -29,7 +29,6 @@ namespace Xamasoft.JsonClassGenerator
         public string MainClass { get; set; }
         public bool UsePascalCase { get; set; }
         public bool UseNestedClasses { get; set; }
-        public bool UseFinalClasses { get; set; }
         public bool ApplyObfuscationAttributes { get; set; }
         public bool SingleFile { get; set; }
         public ICodeWriter CodeWriter { get; set; }
