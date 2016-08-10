@@ -115,7 +115,6 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
         public void WriteClass(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type)
         {
-            
 
             var visibility = config.InternalVisibility ? "internal" : "public";
 
@@ -194,7 +193,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
         {
             foreach (var field in type.Fields)
             {
-                if (config.UsePascalCase || config.ExamplesInDocumentation) sw.WriteLine();
+                if (config.PropertyAttribute != "None" || config.ExamplesInDocumentation) sw.WriteLine();
 
                 if (config.ExamplesInDocumentation)
                 {
@@ -205,15 +204,10 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
                 if (config.UsePascalCase || config.PropertyAttribute != "None")
                 {
-                    if (config.UsePascalCase && config.PropertyAttribute == "None")
-                        sw.WriteLine(prefix + "[JsonProperty(\"{0}\")]", field.JsonMemberName);
-                    else
-                    {
-                        if (config.PropertyAttribute == "DataMember")                        
-                            sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(Name=\"{0}\")]", field.JsonMemberName);
-                        else if (config.PropertyAttribute == "JsonProperty")
-                            sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(\"{0}\")]", field.JsonMemberName);
-                    }
+                    if (config.PropertyAttribute == "DataMember")
+                        sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(Name=\"{0}\")]", field.JsonMemberName);
+                    else if (config.PropertyAttribute == "JsonProperty")
+                        sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(\"{0}\")]", field.JsonMemberName);
                 }
 
                 if (config.UseProperties)
