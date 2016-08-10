@@ -63,19 +63,19 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
             if (config.UseNestedClasses)
             {
-                sw.WriteLine("    {0} Partial Class {1}", visibility, config.MainClass);
+                sw.WriteLine("    {0}{1} Partial Class {2}", visibility, config.UseFinalClasses ? " NotInheritable" : "", config.MainClass);
                 if (!type.IsRoot)
                 {
                     if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("        " + NoRenameAttribute);
                     if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("        " + NoPruneAttribute);
-                    sw.WriteLine("        {0} Class {1}", visibility, type.AssignedName);
+                    sw.WriteLine("        {0}{1} Class {2}", visibility, config.UseFinalClasses ? " NotInheritable" : "", type.AssignedName);
                 }
             }
             else
             {
                 if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("    " + NoRenameAttribute);
                 if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("    " + NoPruneAttribute);
-                sw.WriteLine("    {0} Class {1}", visibility, type.AssignedName);
+                sw.WriteLine("    {0}{1} Class {2}", visibility, config.UseFinalClasses ? " NotInheritable" : "", type.AssignedName);
             }
 
             var prefix = config.UseNestedClasses && !type.IsRoot ? "            " : "        ";

@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 
     string codeeditorclass = "csharp";
-    
+
     if (Model.Language == 2)
     {
         codeeditorclass = "vb";
@@ -16,25 +16,25 @@
 
 @if (Model.Error)
 {
-<div class="alert alert-dismissable alert-danger">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    @if (Model.ErrorNo == 1)
-    {
-        <text>Class Name is Required</text>
-    }
-    else if (Model.ErrorNo == 2)
-    {
-        <text>JSON or a valid URL is required</text>
-    }
-    else if (Model.ErrorNo == 3)
-    {
-        <text>Invalid JSON Syntax</text>
-    }
-    else if (Model.ErrorNo == 4)
-    {
-        <text>Invalid URL. Unable to download JSON data or URL is not valid JSON</text>
-    }
-</div>
+    <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @if (Model.ErrorNo == 1)
+        {
+            <text>Class Name is Required</text>
+        }
+        else if (Model.ErrorNo == 2)
+        {
+            <text>JSON or a valid URL is required</text>
+        }
+        else if (Model.ErrorNo == 3)
+        {
+            <text>Invalid JSON Syntax</text>
+        }
+        else if (Model.ErrorNo == 4)
+        {
+            <text>Invalid URL. Unable to download JSON data or URL is not valid JSON</text>
+        }
+    </div>
 }
 
 <link rel="stylesheet" type="text/css" href="/Content/jsoneditor/jsoneditor-min.css">
@@ -51,104 +51,110 @@
 
         <form class="form form-horizontal" action="/" method="post">
 
-        <h1 class="hide-h1">Generate classes from JSON - Json to C#, Json to VB.net, and JSON Viewer</h1>
-        <div class="control-group">
-            <label class="control-label">Language of classes to generate</label>
-            <div class="col-md-12" id="languages">
-                <div class="radio-inline">
-                    <label>
-                        @Html.RadioButton("Language", 1, Model.Language == 1)
-                        C#
-                    </label>
-                </div>
-                <div class="radio-inline">
-                    <label>
-                        @Html.RadioButton("Language", 2, Model.Language == 2)
-                        VB.Net
-                    </label>
-                </div>
-                <div class="radio-inline">
-                    <label>
-                        @Html.RadioButton("Language", 3, Model.Language == 3)
-                        Javascript
-                    </label>
-                </div>
-                <div class="radio-inline">
-                    <label>
-                        @Html.RadioButton("Language", 4, Model.Language == 4)
-                        SQL Table
-                    </label>
-                </div>
-                <div class="radio-inline">
-                    <label>
-                        @Html.RadioButton("Language", 5, Model.Language == 5)
-                        Java
-                    </label>
-                </div>
-                <div class="radio-inline">
-                    <label>
-                        @Html.RadioButton("Language", 6, Model.Language == 6)
-                        PHP
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="control-group">
-                    <label class="control-label">Class Name</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(m => m.ClassName, new { placeholder = "Class Name", @class = "form-control" })                        
+            <h1 class="hide-h1">Generate classes from JSON - Json to C#, Json to VB.net, and JSON Viewer</h1>
+            <div class="control-group">
+                <label class="control-label">Language of classes to generate</label>
+                <div class="col-md-12" id="languages">
+                    <div class="radio-inline">
+                        <label>
+                            @Html.RadioButton("Language", 1, Model.Language == 1)
+                            C#
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            @Html.RadioButton("Language", 2, Model.Language == 2)
+                            VB.Net
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            @Html.RadioButton("Language", 3, Model.Language == 3)
+                            Javascript
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            @Html.RadioButton("Language", 4, Model.Language == 4)
+                            SQL Table
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            @Html.RadioButton("Language", 5, Model.Language == 5)
+                            Java
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label>
+                            @Html.RadioButton("Language", 6, Model.Language == 6)
+                            PHP
+                        </label>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="control-group">
-                    <label class="control-label"></label>
-                    <div class="col-md-12">
-                        <div class="check-inline">
-                            <label>
-                                @Html.CheckBox("Nest", Model.Nest)
-                                Add Namespace
-                            </label>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="control-group">
+                        <label class="control-label">Class Name</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.ClassName, new { placeholder = "Class Name", @class = "form-control" })
                         </div>
-                        <div class="check-inline">
-                            <label>
-                                @Html.CheckBox("Pascal", Model.Pascal)
-                                Pascal Case
-                            </label>
-                        </div>
-                        <div class="check-inline" id="div-properties">
-                            <label>
-                                @Html.CheckBox("Properties", Model.Properties)
-                                Get &amp; Set
-                            </label>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Property Attributes</label>
-                    <div class="col-md-12">
-                        @Html.DropDownListFor(m => m.PropertyAttribute, Model.PropertyAttributeOptions, new { @class = "form-control" })                        
                     </div>
                 </div>
-            </div>            
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">JSON Text or URL</label>
-            <div class="controls">
-                @Html.TextAreaFor(m => m.JSON, new { @class = "form-control", rows = 5 })
+                <div class="col-md-4">
+                    <div class="control-group">
+                        <label class="control-label"></label>
+                        <div class="col-md-12">
+                            <div class="check-inline">
+                                <label>
+                                    @Html.CheckBox("Nest", Model.Nest)
+                                    Add Namespace
+                                </label>
+                            </div>
+                            <div class="check-inline">
+                                <label>
+                                    @Html.CheckBox("Pascal", Model.Pascal)
+                                    Pascal Case
+                                </label>
+                            </div>
+                            <div class="check-inline" id="div-properties">
+                                <label>
+                                    @Html.CheckBox("Properties", Model.Properties)
+                                    Get &amp; Set
+                                </label>
+                            </div>
+                            <div class="check-inline" id="div-final">
+                                <label>
+                                    @Html.CheckBox("Final", Model.Final)
+                                    Sealed / Final
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Property Attributes</label>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(m => m.PropertyAttribute, Model.PropertyAttributeOptions, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="control-group">
-            <label class="control-label"></label>
-            <div class="controls">
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="control-group">
+                <label class="control-label">JSON Text or URL</label>
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.JSON, new { @class = "form-control", rows = 5 })
+                </div>
             </div>
-        </div>
+
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
 
         </form>
     </div>
@@ -191,8 +197,8 @@
                 </div>
             </div>
         </div>
-    </div>  
-    
+    </div>
+
     <div id="json-text" style="display:none;">
         @Model.JSON
     </div>
@@ -207,9 +213,9 @@
 
     @if (Model.Language == 3)
     {
-        <text>    
-            $('#jsonobjects > pre').text('var myObject = ' + JSON.stringify(JSON.parse($('#json-text').text()), null, "\t") + ';');
-        </text>
+        <text>
+    $('#jsonobjects > pre').text('var myObject = ' + JSON.stringify(JSON.parse($('#json-text').text()), null, "\t") + ';');
+    </text>
     }
 
     Sunlight.highlightAll();
@@ -246,30 +252,36 @@
             languageId = 0;
         }
         switch (languageId) {
+            case 1: //CSharp
+                $("#div-final").show();
+            case 2: //Visual Basic
+                $("#div-final").show();
             case 3: //Javascript
                 $('#ClassName').attr('disabled', 'disabled');
                 $('#Nest').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
-            break;
+                break;
             case 4: //Sql
                 $('#Nest').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
-            break;
+                break;
             case 5: //Java
                 $('#Nest').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
+                $("#div-final").show();
                 break;
             case 6: //PHP
                 $('#Nest').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
+                $("#div-final").show();
                 break;
             default:
-                
+
         }
     }
 
@@ -279,6 +291,8 @@
         $('#Pascal').removeAttr('disabled');
         $('#PropertyAttribute').removeAttr('disabled');
         $("#div-properties").hide();
+        $("#div-final").hide();
+
     }
 
     function copyTextToClipboard(text) {

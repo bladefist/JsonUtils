@@ -14,7 +14,8 @@ namespace Core.ViewModels
 
         public List<SelectListItem> PropertyAttributeOptions
         {
-            get {
+            get
+            {
                 return new List<SelectListItem>() { 
                     new SelectListItem() { Text = "None", Value = "None" },
                     new SelectListItem() { Text = "DataMember", Value = "DataMember" },
@@ -32,9 +33,9 @@ namespace Core.ViewModels
         public bool Nest { get; set; }
         public bool Pascal { get; set; }
         public bool Properties { get; set; }
-
+        public bool Final { get; set; }
         public bool Error { get; set; }
-
         public int ErrorNo { get; set; }
+
     }
 }
