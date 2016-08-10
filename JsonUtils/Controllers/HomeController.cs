@@ -55,7 +55,7 @@ namespace JsonUtils.Controllers
 
             try
             {
-                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.Final, vm.PropertyAttribute));
+                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.PropertyAttribute));
             }
             catch (Exception ex)
             {
@@ -102,14 +102,14 @@ namespace JsonUtils.Controllers
             {
                 return View(model);
             }
-
+            
             try
             {
                 if (model.Language != 3)
                 {
 
                     model.CodeObjects =
-                        Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal, model.Final,
+                        Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal,
                         model.PropertyAttribute, (model.Language == 5 || model.Language == 6) && model.Properties));
                 }
                 else
@@ -118,9 +118,9 @@ namespace JsonUtils.Controllers
             catch (Exception ex)
             {
                 model.Error = true;
-                model.ErrorNo = 3;
+                model.ErrorNo = 3;               
             }
-
+            
             return View(model);
         }
 
@@ -132,7 +132,7 @@ namespace JsonUtils.Controllers
             new TypeScriptCodeWriter()
         };
 
-        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, bool final, string propertyAttribute, bool hasGetSet = false)
+        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, bool hasGetSet=false)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -147,9 +147,9 @@ namespace JsonUtils.Controllers
                 writer = new VisualBasicCodeWriter();
             else if (language == 3)
                 writer = new TypeScriptCodeWriter();
-            else if (language == 4)
+            else if(language == 4)
                 writer = new SqlCodeWriter();
-            else if (language == 5)
+            else if(language == 5)
                 writer = new JavaCodeWriter();
             else
                 writer = new PhpCodeWriter();
@@ -170,12 +170,12 @@ namespace JsonUtils.Controllers
             gen.MainClass = classname;
             gen.UsePascalCase = pascal;
             gen.PropertyAttribute = propertyAttribute;
-            gen.UseFinalClasses = final;
+
             gen.UseNestedClasses = nest;
             gen.ApplyObfuscationAttributes = false;
             gen.SingleFile = true;
             gen.ExamplesInDocumentation = false;
-
+            
             gen.TargetFolder = null;
             gen.SingleFile = true;
 
