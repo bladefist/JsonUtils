@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 
 namespace Xamasoft.JsonClassGenerator.CodeWriters
 {
@@ -18,10 +13,6 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
         {
             get { return "SQL"; }
         }
-
-
-        private const string NoRenameAttribute = "[Obfuscation(Feature = \"renaming\", Exclude = true)]";
-        private const string NoPruneAttribute = "[Obfuscation(Feature = \"trigger\", Exclude = false)]";
 
         public string GetTypeName(JsonType type, IJsonClassGeneratorConfig config)
         {
@@ -50,16 +41,6 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             }
         }
 
-
-        private bool ShouldApplyNoRenamingAttribute(IJsonClassGeneratorConfig config)
-        {
-            return config.ApplyObfuscationAttributes && !config.ExplicitDeserialization && !config.UsePascalCase;
-        }
-        private bool ShouldApplyNoPruneAttribute(IJsonClassGeneratorConfig config)
-        {
-            return config.ApplyObfuscationAttributes && !config.ExplicitDeserialization && config.UseProperties;
-        }
-
         public void WriteFileStart(IJsonClassGeneratorConfig config, TextWriter sw)
         {
             
@@ -73,7 +54,6 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             }
         }
 
-
         public void WriteNamespaceStart(IJsonClassGeneratorConfig config, TextWriter sw, bool root)
         {
 
@@ -86,18 +66,10 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
         public void WriteClass(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type)
         {
-            
-
-            var visibility = config.InternalVisibility ? "internal" : "public";
-
             sw.WriteLine("create table " + type.AssignedName + " (");
             sw.WriteLine("    [Id] [int] IDENTITY(1,1) NOT NULL,");
 
- 
-
-            var prefix = config.UseNestedClasses && !type.IsRoot ? "            " : "        ";
-               
-            WriteClassMembers(config, sw, type, prefix);
+            WriteClassMembers(config, sw, type);
 
             sw.WriteLine("CONSTRAINT [PK_" + type.AssignedName + "] PRIMARY KEY CLUSTERED");
             sw.WriteLine("   (");
@@ -106,32 +78,21 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             sw.WriteLine(")");
 
             sw.WriteLine();
-
-
         }
 
-
-
-        private void WriteClassMembers(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type, string prefix)
+        private void WriteClassMembers(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type)
         {
             foreach (var field in type.Fields)
             {              
-                 
-               
-
                 if (config.UseProperties)
-                {                    
-                    sw.WriteLine("    [{0}] {1},", field.MemberName, field.Type.GetTypeName());
+                {
+                    string typeName = field.Type.InternalType == null 
+                        ? field.Type.GetTypeName() 
+                        : field.Type.InternalType.GetTypeName();
+
+                    sw.WriteLine("    [{0}] {1},", field.MemberName, typeName);
                 }
             }
-
         }
-
-
-
-
-
-
-
     }
 }
