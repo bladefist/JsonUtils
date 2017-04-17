@@ -91,6 +91,12 @@
                         PHP
                     </label>
                 </div>
+                <div class="radio-inline">
+                    <label>
+                        @Html.RadioButton("Language", 7, Model.Language == 7)
+                        TypeScript
+                    </label>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -267,6 +273,10 @@
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
+                break;
+            case 7: //TypeScript
+                $('#Pascal').attr('disabled', 'disabled');
+                $('#PropertyAttribute').attr('disabled', 'disabled');
                 break;
             default:
                 
