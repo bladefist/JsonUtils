@@ -4,11 +4,11 @@
 
     string codeeditorclass = "csharp";
     
-    if (Model.Language == 2)
+    if (Model.Language == JsonUtils.Core.Language.VisualBasic)
     {
         codeeditorclass = "vb";
     }
-    else if (Model.Language == 3)
+    else if (Model.Language == JsonUtils.Core.Language.JavaScript)
     {
         codeeditorclass = "javascript";
     }
@@ -57,43 +57,43 @@
             <div class="col-md-12" id="languages">
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 1, Model.Language == 1)
+                        @Html.RadioButton("Language", 1, Model.Language == JsonUtils.Core.Language.CSharp)
                         C#
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 2, Model.Language == 2)
+                        @Html.RadioButton("Language", 2, Model.Language == JsonUtils.Core.Language.VisualBasic)
                         VB.Net
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 3, Model.Language == 3)
+                        @Html.RadioButton("Language", 3, Model.Language == JsonUtils.Core.Language.JavaScript)
                         Javascript
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 4, Model.Language == 4)
+                        @Html.RadioButton("Language", 4, Model.Language == JsonUtils.Core.Language.Sql)
                         SQL Table
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 5, Model.Language == 5)
+                        @Html.RadioButton("Language", 5, Model.Language == JsonUtils.Core.Language.Java)
                         Java
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 6, Model.Language == 6)
+                        @Html.RadioButton("Language", 6, Model.Language == JsonUtils.Core.Language.PHP)
                         PHP
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        @Html.RadioButton("Language", 7, Model.Language == 7)
+                        @Html.RadioButton("Language", 7, Model.Language == JsonUtils.Core.Language.TypeScript)
                         TypeScript
                     </label>
                 </div>
@@ -211,7 +211,7 @@
 
 <script type="text/javascript">
 
-    @if (Model.Language == 3)
+    @if (Model.Language == JsonUtils.Core.Language.JavaScript)
     {
         <text>    
             $('#jsonobjects > pre').text('var myObject = ' + JSON.stringify(JSON.parse($('#json-text').text()), null, "\t") + ';');

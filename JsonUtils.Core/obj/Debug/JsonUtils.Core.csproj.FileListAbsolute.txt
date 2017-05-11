@@ -1,0 +1,10 @@
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\JsonUtils.Core.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\JsonUtils.Core.pdb
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\Xamasoft.JsonClassGenerator.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\System.Data.Entity.Design.PluralizationServices.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\Xamasoft.JsonClassGenerator.pdb
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\obj\Debug\JsonUtils.Core.csprojResolveAssemblyReference.cache
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\obj\Debug\JsonUtils.Core.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core\obj\Debug\JsonUtils.Core.pdb
