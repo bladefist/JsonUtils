@@ -7,8 +7,8 @@
     <ProjectGuid>{5943C365-0915-4D35-B763-B74AA4F7C725}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JsonUtils.AutoGen</RootNamespace>
-    <AssemblyName>JsonUtils.AutoGen</AssemblyName>
+    <RootNamespace>JsonUtils.CLI</RootNamespace>
+    <AssemblyName>JsonUtils.CLI</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Example\JsonInput.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

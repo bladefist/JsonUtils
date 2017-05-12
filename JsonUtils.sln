@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonUtils.Web", "JsonUtils\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonClassGeneratorLib", "JsonCSharpClassGeneratorLib\JsonClassGeneratorLib.csproj", "{7BEF7EAA-DE37-40FB-BD33-3DEF0685031F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonUtils.AutoGen", "JsonUtils.AutoGen\JsonUtils.AutoGen.csproj", "{5943C365-0915-4D35-B763-B74AA4F7C725}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonUtils.CLI", "JsonUtils.AutoGen\JsonUtils.CLI.csproj", "{5943C365-0915-4D35-B763-B74AA4F7C725}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonUtils.Core", "JsonUtils.Core\JsonUtils.Core.csproj", "{D7DAE321-E824-4487-82BD-417152C41FFD}"
 EndProject

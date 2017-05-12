@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JsonUtils.Core.Testing
 {
     [TestClass]
-    public class TestAutoGen
+    public class Tester
     {
         [TestMethod]
-        public void AutoGen()
+        public void CLI()
         {
             var RootObject = "";
             string jsonInput = @"{""employees"": [
@@ -17,10 +17,12 @@ namespace JsonUtils.Core.Testing
                         ]
                         }";
 
-            var Language = "";
+            var Language = JsonUtils.Core.Language.CSharp;
 
-            CodeGenerationHelper.Prepare(jsonInput, RootObject, Language, false, false,
-                        "None", (model.Language == 5 || model.Language == 6) && true);
+            var output = CodeGenerationHelper.Prepare(jsonInput, RootObject, Language, "", false,
+                        "None",(JsonUtils.Core.Language.Java == Language || JsonUtils.Core.Language.PHP == Language) && true);
+
+            string t = "";
         }
 
     }

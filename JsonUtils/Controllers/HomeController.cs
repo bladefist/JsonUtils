@@ -54,7 +54,7 @@ namespace JsonUtils.Web.Controllers
 
             try
             {
-                vm.CodeObjects = Server.HtmlEncode(JsonUtils.Core.CodeGenerationHelper.Prepare(vm.JSON, vm.ClassName, JsonUtils.Core.Language.CSharp, vm.Nest, false, vm.PropertyAttribute));
+                vm.CodeObjects = Server.HtmlEncode(JsonUtils.Core.CodeGenerationHelper.Prepare(vm.JSON, vm.ClassName, JsonUtils.Core.Language.CSharp, vm.Nest ? "JsonUtils":"", false, vm.PropertyAttribute));
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace JsonUtils.Web.Controllers
                 {
 
                     model.CodeObjects =
-                        Server.HtmlEncode(JsonUtils.Core.CodeGenerationHelper.Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal,
+                        Server.HtmlEncode(JsonUtils.Core.CodeGenerationHelper.Prepare(model.JSON, model.ClassName, model.Language, model.Nest? "JsonUtils":"", model.Pascal,
                         model.PropertyAttribute, (model.Language == Core.Language.Java || model.Language == Core.Language.PHP) && model.Properties));
                 }
                 else

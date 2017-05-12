@@ -16,7 +16,7 @@ namespace JsonUtils.Core
             new TypeScriptCodeWriter()
         };
 
-        public static string Prepare(string JSON, string classname, Core.Language language, bool nest, bool pascal, string propertyAttribute, bool hasGetSet = false)
+        public static string Prepare(string JSON, string classname, Core.Language language, string aNamespace, bool pascal, string propertyAttribute, bool hasGetSet = false)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -56,8 +56,8 @@ namespace JsonUtils.Core
             gen.InternalVisibility = false;
             gen.CodeWriter = writer;
             gen.ExplicitDeserialization = false;
-            if (nest)
-                gen.Namespace = "JSONUtils";
+            if (!string.IsNullOrEmpty(aNamespace))
+                gen.Namespace = aNamespace;
             else
                 gen.Namespace = null;
 
@@ -68,7 +68,7 @@ namespace JsonUtils.Core
             gen.UsePascalCase = pascal;
             gen.PropertyAttribute = propertyAttribute;
 
-            gen.UseNestedClasses = nest;
+            gen.UseNestedClasses = !string.IsNullOrEmpty(aNamespace);
             gen.ApplyObfuscationAttributes = false;
             gen.SingleFile = true;
             gen.ExamplesInDocumentation = false;
