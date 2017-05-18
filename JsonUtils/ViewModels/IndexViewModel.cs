@@ -10,6 +10,8 @@ namespace Core.ViewModels
     public class IndexViewModel
     {
         public string ClassName { get; set; }
+
+        public string Namespace { get; set; }
         public string JSON { get; set; }
 
         public List<SelectListItem> PropertyAttributeOptions

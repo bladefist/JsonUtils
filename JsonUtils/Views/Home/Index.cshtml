@@ -130,12 +130,18 @@
                                 Get &amp; Set
                             </label>
                         </div>
-                    </div>                    
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Namespace</label>
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.Namespace, new {placeholder = "Namespace", @class = "form-control"})
+                    </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Property Attributes</label>
                     <div class="col-md-12">
-                        @Html.DropDownListFor(m => m.PropertyAttribute, Model.PropertyAttributeOptions, new { @class = "form-control" })                        
+                        @Html.DropDownListFor(m => m.PropertyAttribute, Model.PropertyAttributeOptions, new { @class = "form-control" })
                     </div>
                 </div>
             </div>            
@@ -255,21 +261,25 @@
             case 3: //Javascript
                 $('#ClassName').attr('disabled', 'disabled');
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
             break;
             case 4: //Sql
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
             break;
             case 5: //Java
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
                 break;
             case 6: //PHP
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
@@ -281,6 +291,14 @@
             default:
                 
         }
+    }
+
+    function toggleNamespace(checked) {
+        if (checked) {
+            $('#Namespace').removeAttr('disabled');
+        }
+        else
+            $('#Namespace').attr('disabled', 'disabled');;
     }
 
     function resetAttributes() {
@@ -359,9 +377,18 @@
             disableAttributes(selectedValue);
         });
 
+        $("#Nest").click(function () {
+            var namespaceCheck = $('#Nest').is(':checked');
+            toggleNamespace(namespaceCheck);
+        });
+
         //Enable/Disable on ready
         var selectedValue = $('input:radio[name=Language]:checked').val();
         disableAttributes(selectedValue);
+
+        //Namespace Enable/Disable
+        var namespaceCheck = $('#Nest').is(':checked');
+        toggleNamespace(namespaceCheck);
 
         //Attach event to copy contents of the sunlight editor to the clipboard
         var copierTitle = 'copy the generated code to your clipboard';
