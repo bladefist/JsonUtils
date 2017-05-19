@@ -18,6 +18,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             get { return "Java"; }
         }
 
+        public IList<string> Keywords { get {return _getKeywords();} }
+
         public string GetTypeName(JsonType type, IJsonClassGeneratorConfig config)
         {
             var arraysAsLists = !config.ExplicitDeserialization;
@@ -198,6 +200,66 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             sb.Append(value.Substring(1));
 
             return sb.ToString();
+        }
+
+        private static List<string> _getKeywords()
+        {
+            return new List<string>()
+            {
+                "abstract",
+                "assert" ,
+                "boolean",
+                "break",
+                "byte",
+                "case",
+                "catch",
+                "char",
+                "class",
+                "const",
+                "default",
+                "do",
+                "double",
+                "else",
+                "enum",
+                "extends",
+                "false",
+                "final",
+                "finally",
+                "float",
+                "for",
+                "goto",
+                "if",
+                "implements",
+                "import",
+                "instanceof",
+                "int",
+                "interface",
+                "long",
+                "native",
+                "new",
+                "null",
+                "package",
+                "private",
+                "protected",
+                "public",
+                "return",
+                "short",
+                "static",
+                "strictfp",
+                "super",
+                "switch",
+                "synchronized",
+                "this",
+                "throw",
+                "throws",
+                "transient",
+                "true",
+                "try",
+                "void",
+                "volatile",
+                "while",
+                "continue"
+            };
         }
     }
 }

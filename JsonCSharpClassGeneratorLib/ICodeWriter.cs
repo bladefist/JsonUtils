@@ -10,6 +10,7 @@ namespace Xamasoft.JsonClassGenerator
     {
         string FileExtension { get; }
         string DisplayName { get; }
+        IList<string> Keywords { get; }
         string GetTypeName(JsonType type, IJsonClassGeneratorConfig config);
         void WriteClass(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type);
         void WriteFileStart(IJsonClassGeneratorConfig config, TextWriter sw);

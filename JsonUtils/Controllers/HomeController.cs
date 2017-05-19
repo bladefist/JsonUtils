@@ -97,6 +97,11 @@ namespace JsonUtils.Controllers
                 }
             }
 
+            if (_containsKeyword(model.JSON, model.Language))
+            {
+                model.Error = true;
+                model.ErrorNo = 5;
+            }
 
             if (model.Error)
             {
@@ -187,7 +192,31 @@ namespace JsonUtils.Controllers
             }
         }
 
+        private bool _containsKeyword(string Json, int language)
+        {
+            ICodeWriter writer;
 
+            if (language == 1)
+                writer = new CSharpCodeWriter();
+            else if (language == 2)
+                writer = new VisualBasicCodeWriter();
+            else if (language == 7)
+                writer = new TypeScriptCodeWriter();
+            else if (language == 4)
+                writer = new SqlCodeWriter();
+            else if (language == 5)
+                writer = new JavaCodeWriter();
+            else
+                writer = new PhpCodeWriter();
+
+            var jtoken = JToken.Parse(Json);
+            var hashSet = jtoken.ToHashSet();
+
+            if (writer.Keywords.Any(x => hashSet.Contains(x)))
+                return true;
+
+            return false;
+        }
 
         public string Result { get; set; }
 

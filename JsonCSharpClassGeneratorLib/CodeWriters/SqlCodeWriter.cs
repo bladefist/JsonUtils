@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace Xamasoft.JsonClassGenerator.CodeWriters
 {
@@ -13,6 +14,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
         {
             get { return "SQL"; }
         }
+
+        public IList<string> Keywords { get { return new List<string>(); } }
 
         public string GetTypeName(JsonType type, IJsonClassGeneratorConfig config)
         {
