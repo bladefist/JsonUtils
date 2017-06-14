@@ -1,7 +1,7 @@
 # JsonUtils
 Json to C#, VB.Net, Javascript and SQL Server Table
 
-Powers [JsonUtils.adiskovacevic.com](http://jsonutils.adiskovacevic.com)
+Powers [JsonUtil.adiskovacevic.com](http://jsonutil.adiskovacevic.com)
 
 Updated from [JsonUtils.com](http://jsonutils.com)
 
