@@ -24,22 +24,22 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
             switch (type.Type)
             {
-                case JsonTypeEnum.Anything: return "Object";
-                case JsonTypeEnum.Array: return "array(" + GetTypeName(type.InternalType, config) + ")";
+                case JsonTypeEnum.Anything: return "object";
+                case JsonTypeEnum.Array: return GetTypeName(type.InternalType, config) + "[]";
                 case JsonTypeEnum.Boolean: return "boolean";
-                case JsonTypeEnum.Float: return "double";
+                case JsonTypeEnum.Float: return "float";
                 case JsonTypeEnum.Integer: return "int";
-                case JsonTypeEnum.Long: return "long";
-                case JsonTypeEnum.Date: return "Date";
-                case JsonTypeEnum.NonConstrained: return "Object";
-                case JsonTypeEnum.NullableBoolean: return "bool?";
-                case JsonTypeEnum.NullableFloat: return "double?";
-                case JsonTypeEnum.NullableInteger: return "int?";
-                case JsonTypeEnum.NullableLong: return "long?";
-                case JsonTypeEnum.NullableDate: return "DateTime?";
+                case JsonTypeEnum.Long: return "int";
+                case JsonTypeEnum.Date: return "\\DateTime";
+                case JsonTypeEnum.NonConstrained: return "object";
+                case JsonTypeEnum.NullableBoolean: return "bool";
+                case JsonTypeEnum.NullableFloat: return "float";
+                case JsonTypeEnum.NullableInteger: return "int";
+                case JsonTypeEnum.NullableLong: return "int";
+                case JsonTypeEnum.NullableDate: return "\\DateTime?";
                 case JsonTypeEnum.NullableSomething: return "object";
                 case JsonTypeEnum.Object: return type.AssignedName;
-                case JsonTypeEnum.String: return "String";
+                case JsonTypeEnum.String: return "string";
                 default: throw new System.NotSupportedException("Unsupported json type");
             }
         }
@@ -172,8 +172,12 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                     sw.WriteLine();
                 }
                 else
-                {                    
-                    sw.WriteLine(prefix + "public ${1}; //{0}", field.Type.GetTypeName(), field.MemberName);
+                {
+                    sw.WriteLine(prefix + "/**");
+                    sw.WriteLine(prefix + " * @var " + field.Type.GetTypeName());
+                    sw.WriteLine(prefix + " */");
+                    sw.WriteLine(prefix + "public ${0};", field.MemberName);
+                    sw.WriteLine();
                 }
             }
 
