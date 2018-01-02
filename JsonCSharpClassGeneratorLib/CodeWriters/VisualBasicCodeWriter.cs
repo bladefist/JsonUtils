@@ -110,13 +110,15 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                     sw.WriteLine(prefix + "<JsonProperty(\"{0}\")>", field.JsonMemberName);
                 }
 
+                var validVbName = VisualBasicReservedWords.IsReserved(field.MemberName) ? $"[{field.MemberName}]" : field.MemberName;
+
                 if (config.UseProperties)
                 {
-                    sw.WriteLine(prefix + "Public Property {1} As {0}", field.Type.GetTypeName(), field.MemberName);
+                    sw.WriteLine(prefix + "Public Property {1} As {0}", field.Type.GetTypeName(), validVbName);
                 }
                 else
                 {
-                    sw.WriteLine(prefix + "Public {1} As {0}", field.Type.GetTypeName(), field.MemberName);
+                    sw.WriteLine(prefix + "Public {1} As {0}", field.Type.GetTypeName(), validVbName);
                 }
             }
 
