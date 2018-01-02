@@ -61,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="VisualBasicReservedWords.cs" />
     <None Include="JsonClassHelper.cs" />
     <Compile Include="JsonType.cs" />
     <Compile Include="JsonTypeEnum.cs" />
