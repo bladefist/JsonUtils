@@ -18,6 +18,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             get { return "PHP"; }
         }
 
+        public IList<string> Keywords { get { return new List<string>(); } }
+
         public string GetTypeName(JsonType type, IJsonClassGeneratorConfig config)
         {
             var arraysAsLists = !config.ExplicitDeserialization;

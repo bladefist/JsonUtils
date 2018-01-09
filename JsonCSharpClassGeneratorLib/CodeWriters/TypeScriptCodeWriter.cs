@@ -18,6 +18,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             get { return "TypeScript"; }
         }
 
+        public IList<string> Keywords { get { return new List<string>(); } }
+
         public string GetTypeName(JsonType type, IJsonClassGeneratorConfig config)
         {
             switch (type.Type)
