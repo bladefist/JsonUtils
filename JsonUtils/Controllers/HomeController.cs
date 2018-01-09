@@ -9,10 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using Core.ViewModels;
 using Newtonsoft.Json.Linq;
-using Xamasoft.JsonClassGenerator;
-using Xamasoft.JsonClassGenerator.CodeWriters;
 
-namespace JsonUtils.Controllers
+
+namespace JsonUtils.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -55,14 +54,14 @@ namespace JsonUtils.Controllers
 
             try
             {
-                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.PropertyAttribute));
+                vm.CodeObjects = Server.HtmlEncode(JsonUtils.Core.CodeGenerationHelper.Prepare(vm.JSON, vm.ClassName, JsonUtils.Core.Language.CSharp, vm.Nest ? "JsonUtils":"", false, vm.PropertyAttribute));
             }
             catch (Exception ex)
             {
                 vm.Error = true;
                 vm.ErrorNo = 3;
             }
-            vm.Language = 1;
+            vm.Language = JsonUtils.Core.Language.CSharp;
 
             return View(vm);
         }
@@ -105,12 +104,12 @@ namespace JsonUtils.Controllers
             
             try
             {
-                if (model.Language != 3)
+                if (model.Language !=  Core.Language.JavaScript)
                 {
 
                     model.CodeObjects =
-                        Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal,
-                        model.PropertyAttribute, (model.Language == 5 || model.Language == 6) && model.Properties));
+                        Server.HtmlEncode(JsonUtils.Core.CodeGenerationHelper.Prepare(model.JSON, model.ClassName, model.Language, model.Nest? "JsonUtils":"", model.Pascal,
+                        model.PropertyAttribute, (model.Language == Core.Language.Java || model.Language == Core.Language.PHP) && model.Properties));
                 }
                 else
                     model.CodeObjects = "javascript";
@@ -126,68 +125,7 @@ namespace JsonUtils.Controllers
 
 
 
-        private readonly static ICodeWriter[] CodeWriters = new ICodeWriter[] {
-            new CSharpCodeWriter(),
-            new VisualBasicCodeWriter(),
-            new TypeScriptCodeWriter()
-        };
-
-        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, bool hasGetSet=false)
-        {
-            if (string.IsNullOrEmpty(JSON))
-            {
-                return null;
-            }
-
-            ICodeWriter writer;
-
-            if (language == 1)
-                writer = new CSharpCodeWriter();
-            else if (language == 2)
-                writer = new VisualBasicCodeWriter();
-            else if (language == 7)
-                writer = new TypeScriptCodeWriter();
-            else if(language == 4)
-                writer = new SqlCodeWriter();
-            else if(language == 5)
-                writer = new JavaCodeWriter();
-            else
-                writer = new PhpCodeWriter();
-
-            var gen = new JsonClassGenerator();
-            gen.Example = JSON;
-            gen.InternalVisibility = false;
-            gen.CodeWriter = writer;
-            gen.ExplicitDeserialization = false;
-            if (nest)
-                gen.Namespace = "JSONUtils";
-            else
-                gen.Namespace = null;
-
-            gen.NoHelperClass = false;
-            gen.SecondaryNamespace = null;
-            gen.UseProperties = (language != 5 && language != 6) || hasGetSet;
-            gen.MainClass = classname;
-            gen.UsePascalCase = pascal;
-            gen.PropertyAttribute = propertyAttribute;
-
-            gen.UseNestedClasses = nest;
-            gen.ApplyObfuscationAttributes = false;
-            gen.SingleFile = true;
-            gen.ExamplesInDocumentation = false;
-            
-            gen.TargetFolder = null;
-            gen.SingleFile = true;
-
-            using (var sw = new StringWriter())
-            {
-                gen.OutputStream = sw;
-                gen.GenerateClasses();
-                sw.Flush();
-
-                return sw.ToString();
-            }
-        }
+      
 
 
 

@@ -1,0 +1,14 @@
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\JsonUtils.Core.Testing.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\JsonUtils.Core.Testing.pdb
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\JsonUtils.Core.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\Xamasoft.JsonClassGenerator.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\System.Data.Entity.Design.PluralizationServices.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\Xamasoft.JsonClassGenerator.pdb
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\JsonUtils.Core.pdb
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\obj\Debug\JsonUtils.Core.Testing.csprojResolveAssemblyReference.cache
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\obj\Debug\JsonUtils.Core.Testing.dll
+C:\Users\Nico\Downloads\JsonUtils\JsonUtils.Core.Testing\obj\Debug\JsonUtils.Core.Testing.pdb

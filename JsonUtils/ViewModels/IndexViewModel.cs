@@ -25,7 +25,7 @@ namespace Core.ViewModels
 
         public string PropertyAttribute { get; set; }
 
-        public int Language { get; set; }
+        public JsonUtils.Core.Language Language { get; set; }
 
         public string CodeObjects { get; set; }
 
