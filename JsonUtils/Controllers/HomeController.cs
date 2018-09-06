@@ -50,12 +50,13 @@ namespace JsonUtils.Controllers
             }
 
             vm.ClassName = "Example";
+            vm.Namespace = "JSONUtils";
             vm.PropertyAttribute = "None";
             vm.Nest = false;
 
             try
             {
-                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.PropertyAttribute));
+                vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.PropertyAttribute, vm.Namespace));
             }
             catch (Exception ex)
             {
@@ -76,6 +77,7 @@ namespace JsonUtils.Controllers
                 //model.Error = true;
                 //model.ErrorNo = 1;
                 model.ClassName = "RootObject";
+                model.Namespace = "JSONUtils";
             }
             else if (string.IsNullOrEmpty(model.JSON))
             {
@@ -110,7 +112,7 @@ namespace JsonUtils.Controllers
 
                     model.CodeObjects =
                         Server.HtmlEncode(Prepare(model.JSON, model.ClassName, model.Language, model.Nest, model.Pascal,
-                        model.PropertyAttribute, (model.Language == 5 || model.Language == 6) && model.Properties));
+                        model.PropertyAttribute, model.Namespace, (model.Language == 5 || model.Language == 6) && model.Properties));
                 }
                 else
                     model.CodeObjects = "javascript";
@@ -132,7 +134,7 @@ namespace JsonUtils.Controllers
             new TypeScriptCodeWriter()
         };
 
-        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, bool hasGetSet=false)
+        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, string nameSpace, bool hasGetSet=false)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -160,7 +162,7 @@ namespace JsonUtils.Controllers
             gen.CodeWriter = writer;
             gen.ExplicitDeserialization = false;
             if (nest)
-                gen.Namespace = "JSONUtils";
+                gen.Namespace = nameSpace;
             else
                 gen.Namespace = null;
 
