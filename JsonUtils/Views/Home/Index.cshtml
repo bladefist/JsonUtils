@@ -117,6 +117,10 @@
                                 @Html.CheckBox("Nest", Model.Nest)
                                 Add Namespace
                             </label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Namespace, new { placeholder = "Namespace", @class = "form-control" })                        
+                            </div>
+                            <br />
                         </div>
                         <div class="check-inline">
                             <label>
@@ -255,21 +259,25 @@
             case 3: //Javascript
                 $('#ClassName').attr('disabled', 'disabled');
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
             break;
             case 4: //Sql
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
             break;
             case 5: //Java
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
                 break;
             case 6: //PHP
                 $('#Nest').attr('disabled', 'disabled');
+                $('#Namespace').attr('disabled', 'disabled');
                 $('#Pascal').attr('disabled', 'disabled');
                 $('#PropertyAttribute').attr('disabled', 'disabled');
                 $("#div-properties").show();
@@ -286,6 +294,7 @@
     function resetAttributes() {
         $('#ClassName').removeAttr('disabled');
         $('#Nest').removeAttr('disabled');
+        $('#Namespace').removeAttr('disabled');
         $('#Pascal').removeAttr('disabled');
         $('#PropertyAttribute').removeAttr('disabled');
         $("#div-properties").hide();
@@ -351,6 +360,15 @@
         document.body.removeChild(textArea);
     }
 
+    function checkNestCheckbox(element) {
+        if (element.is(':checked')) {
+            $('#Namespace').removeAttr('disabled');
+            return;
+        }
+
+        $('#Namespace').attr('disabled', 'disabled');
+    }
+
 
     $(document).ready(function () {
         //Language radio button type click
@@ -376,6 +394,12 @@
                 copyTextToClipboard(obj.text());
                 copier.attr('title', copierTitle);
             });
+
+        checkNestCheckbox($('#Nest'));
+    
+        $('#Nest').click(function () {
+            checkNestCheckbox($(this));
+        });
     });
 
 </script>
