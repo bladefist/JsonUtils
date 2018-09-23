@@ -171,7 +171,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 {
                     sw.WriteLine(prefix + "@JsonProperty" + "(\"{0}\")", field.JsonMemberName);
                     sw.WriteLine(prefix + "public {0} get{1}() {{ \r\t\t return this.{2} \r\t}}", field.Type.GetTypeName(), ChangeFirstChar(field.MemberName), ChangeFirstChar(field.MemberName, false));
-                    sw.WriteLine(prefix + "public {0} set{1}({0} {2}) {{ \r\t\t this.{2} = {2} \r\t}}", field.Type.GetTypeName(), ChangeFirstChar(field.MemberName), ChangeFirstChar(field.MemberName, false));
+                    sw.WriteLine(prefix + "public void set{1}({0} {2}) {{ \r\t\t this.{2} = {2} \r\t}}", field.Type.GetTypeName(), ChangeFirstChar(field.MemberName), ChangeFirstChar(field.MemberName, false));
                     sw.WriteLine(prefix + "{0} {1};", field.Type.GetTypeName(), ChangeFirstChar(field.MemberName, false)); 
                     sw.WriteLine();
                 }
