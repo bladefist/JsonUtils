@@ -76,7 +76,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             sw.WriteLine("{");
             //}
 
-            var prefix = config.UseNestedClasses && !type.IsRoot ? "" : "    ";
+            var prefix = "    ";
 
 
             var shouldSuppressWarning = config.InternalVisibility && !config.UseProperties && !config.ExplicitDeserialization;
@@ -105,12 +105,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 sw.WriteLine();
             }
 
-
-            if (config.UseNestedClasses && !type.IsRoot)
-                sw.WriteLine("        }");
-
-            if (!config.UseNestedClasses)
-                sw.WriteLine("}");
+            sw.WriteLine("}");
 
             sw.WriteLine();
         }
@@ -128,6 +123,9 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
         public void WriteNamespaceStart(IJsonClassGeneratorConfig config, TextWriter sw, bool root)
         {
             sw.WriteLine("<?php");
+            sw.Write("\r");
+            sw.Write("namespace {0};", config.Namespace);
+            sw.Write("\r");
             sw.Write("\r");
         }
 
