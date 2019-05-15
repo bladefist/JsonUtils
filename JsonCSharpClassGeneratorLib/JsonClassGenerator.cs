@@ -221,9 +221,9 @@ namespace Xamasoft.JsonClassGenerator
                         }
                     }
 
+                    fieldType.AssignName(CreateUniqueClassName(field.Key));
                     if (!classNames.Contains(field.Key))
                     {
-                        fieldType.AssignName(CreateUniqueClassName(field.Key));
                         GenerateClass(subexamples.ToArray(), fieldType);
 
                         classNames.Add(field.Key);
