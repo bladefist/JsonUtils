@@ -166,8 +166,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 if (config.UseProperties)
                 {
                     //sw.WriteLine(prefix + "@JsonProperty" + "(\"{0}\")", field.JsonMemberName);
-                    sw.WriteLine(prefix + "public function get{0}() {{ \r\t\t return $this->{1} \r\t}}", ChangeFirstChar(field.MemberName), field.MemberName);
-                    sw.WriteLine(prefix + "public function set{0}(${1}) {{ \r\t\t $this->{1} = ${1} \r\t}}", ChangeFirstChar(field.MemberName), field.MemberName);
+                    sw.WriteLine(prefix + "public function get{0}() {{ \r\t\t return $this->{1}; \r\t}}", ChangeFirstChar(field.MemberName), field.MemberName);
+                    sw.WriteLine(prefix + "public function set{0}(${1}) {{ \r\t\t $this->{1} = ${1}; \r\t}}", ChangeFirstChar(field.MemberName), field.MemberName);
                     sw.WriteLine(prefix + "public ${1}; //{0}", field.Type.GetTypeName(), field.MemberName);
                     sw.WriteLine();
                 }
