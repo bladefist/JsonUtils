@@ -32,7 +32,7 @@ namespace JsonUtils.Controllers
                 {
                     vm.JSON = new WebClient().DownloadString(url);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     vm.Error = true;
                     vm.ErrorNo = 4;
@@ -58,7 +58,7 @@ namespace JsonUtils.Controllers
             {
                 vm.CodeObjects = Server.HtmlEncode(Prepare(vm.JSON, vm.ClassName, 1, vm.Nest, false, vm.PropertyAttribute, vm.Namespace));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 vm.Error = true;
                 vm.ErrorNo = 3;
@@ -92,7 +92,7 @@ namespace JsonUtils.Controllers
                 {
                     model.JSON = new WebClient().DownloadString(model.JSON);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     model.Error = true;
                     model.ErrorNo = 4;
@@ -104,7 +104,7 @@ namespace JsonUtils.Controllers
             {
                 return View(model);
             }
-            
+
             try
             {
                 if (model.Language != 3)
@@ -117,12 +117,12 @@ namespace JsonUtils.Controllers
                 else
                     model.CodeObjects = "javascript";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 model.Error = true;
-                model.ErrorNo = 3;               
+                model.ErrorNo = 3;
             }
-            
+
             return View(model);
         }
 
@@ -134,7 +134,7 @@ namespace JsonUtils.Controllers
             new TypeScriptCodeWriter()
         };
 
-        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, string nameSpace, bool hasGetSet=false)
+        private string Prepare(string JSON, string classname, int language, bool nest, bool pascal, string propertyAttribute, string nameSpace, bool hasGetSet = false)
         {
             if (string.IsNullOrEmpty(JSON))
             {
@@ -149,18 +149,20 @@ namespace JsonUtils.Controllers
                 writer = new VisualBasicCodeWriter();
             else if (language == 7)
                 writer = new TypeScriptCodeWriter();
-            else if(language == 4)
+            else if (language == 4)
                 writer = new SqlCodeWriter();
-            else if(language == 5)
+            else if (language == 5)
                 writer = new JavaCodeWriter();
             else
                 writer = new PhpCodeWriter();
 
-            var gen = new JsonClassGenerator();
-            gen.Example = JSON;
-            gen.InternalVisibility = false;
-            gen.CodeWriter = writer;
-            gen.ExplicitDeserialization = false;
+            var gen = new JsonClassGenerator
+            {
+                Example = JSON,
+                InternalVisibility = false,
+                CodeWriter = writer,
+                ExplicitDeserialization = false
+            };
             if (nest)
                 gen.Namespace = nameSpace;
             else
@@ -177,7 +179,7 @@ namespace JsonUtils.Controllers
             gen.ApplyObfuscationAttributes = false;
             gen.SingleFile = true;
             gen.ExamplesInDocumentation = false;
-            
+
             gen.TargetFolder = null;
             gen.SingleFile = true;
 
