@@ -19,7 +19,8 @@ namespace Core.ViewModels
                 return new List<SelectListItem>() { 
                     new SelectListItem() { Text = "None", Value = "None" },
                     new SelectListItem() { Text = "DataMember", Value = "DataMember" },
-                    new SelectListItem() { Text = "JsonProperty", Value = "JsonProperty" }
+                    new SelectListItem() { Text = "JsonProperty", Value = "JsonProperty" },
+                    new SelectListItem() { Text = "JsonPropertyName", Value = "JsonPropertyName" },
                 };
             }
         }
