@@ -126,6 +126,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                     {
                         sw.WriteLine("        [DataContract]");
                     }
+                    sw.WriteLine("        [Serializable]");
 
                     if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("        " + NoRenameAttribute);
                     if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("        " + NoPruneAttribute);
@@ -139,6 +140,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 {
                     sw.WriteLine("    [DataContract]");
                 }
+                sw.WriteLine("        [Serializable]");
 
                 if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("    " + NoRenameAttribute);
                 if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("    " + NoPruneAttribute);
