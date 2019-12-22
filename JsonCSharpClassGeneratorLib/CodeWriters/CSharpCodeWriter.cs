@@ -126,6 +126,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                     {
                         sw.WriteLine("        [DataContract]");
                     }
+                    sw.WriteLine("        [Serializable]");
 
                     if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("        " + NoRenameAttribute);
                     if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("        " + NoPruneAttribute);
@@ -139,6 +140,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 {
                     sw.WriteLine("    [DataContract]");
                 }
+                sw.WriteLine("        [Serializable]");
 
                 if (ShouldApplyNoRenamingAttribute(config)) sw.WriteLine("    " + NoRenameAttribute);
                 if (ShouldApplyNoPruneAttribute(config)) sw.WriteLine("    " + NoPruneAttribute);
@@ -206,7 +208,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 {
                     if (config.PropertyAttribute == "DataMember")
                         sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(Name=\"{0}\")]", field.JsonMemberName);
-                    else if (config.PropertyAttribute == "JsonProperty")
+                    else if (config.PropertyAttribute == "JsonProperty" || config.PropertyAttribute == "JsonPropertyName")
                         sw.WriteLine(prefix + "[" + config.PropertyAttribute + "(\"{0}\")]", field.JsonMemberName);
                 }
 
