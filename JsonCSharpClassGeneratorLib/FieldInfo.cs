@@ -1,10 +1,9 @@
 ﻿// Copyright © 2010 Xamasoft
 
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Xamasoft.JsonClassGenerator
 {
@@ -15,7 +14,7 @@ namespace Xamasoft.JsonClassGenerator
         {
             this.generator = generator;
             this.JsonMemberName = jsonMemberName;
-            this.MemberName = jsonMemberName;
+            this.MemberName = ParseSpecialCharacters(jsonMemberName);
             if (usePascalCase) MemberName = JsonClassGenerator.ToTitleCase(MemberName);
             this.Type = type;
             this.Examples = Examples;
@@ -64,11 +63,14 @@ namespace Xamasoft.JsonClassGenerator
 
         }
 
-
-
         public string GetExamplesText()
         {
             return string.Join(", ", Examples.Take(5).Select(x => JsonConvert.SerializeObject(x)).ToArray());
+        }
+
+        private string ParseSpecialCharacters(string name)
+        {
+            return Regex.Replace(name, @"[^0-9a-zA-Z]+", "_");
         }
 
     }
