@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -60,7 +60,11 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
         public void WriteClass(IJsonClassGeneratorConfig config, TextWriter sw, JsonType type)
         {
             var visibility = config.InternalVisibility ? "Friend" : "Public";
-
+            if (config.UsePascalCase && config.PropertyAttribute == "DataMember")
+            {
+                sw.WriteLine("    <DataContract()>");
+            }
+            
             if (config.UseNestedClasses)
             {
                 sw.WriteLine("    {0} Partial Class {1}", visibility, config.MainClass);
@@ -107,8 +111,16 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
 
                 if (config.UsePascalCase)
                 {
-                    sw.WriteLine(prefix + "<JsonProperty(\"{0}\")>", field.JsonMemberName);
-                }
+                    if (config.PropertyAttribute == "JsonProperty")
+                    {
+                        sw.WriteLine(prefix + "<{0}(\"{1}\")>", config.PropertyAttribute, field.JsonMemberName);
+                    }
+
+                    if (config.PropertyAttribute == "DataMember")
+                    {
+                        sw.WriteLine(prefix + "<{0}(Name:=\"{1}\")>", config.PropertyAttribute, field.JsonMemberName);
+                    }
+                }             
 
                 var validVbName = VisualBasicReservedWords.IsReserved(field.MemberName) ? $"[{field.MemberName}]" : field.MemberName;
 
@@ -123,11 +135,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             }
 
         }
-
-
-
-
-
+        
         public void WriteFileStart(IJsonClassGeneratorConfig config, TextWriter sw)
         {
             foreach (var line in JsonClassGenerator.FileHeader)
