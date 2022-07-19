@@ -24,7 +24,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             {
                 case JsonTypeEnum.Anything: return "any";
                 case JsonTypeEnum.String: return "string";
-                case JsonTypeEnum.Boolean: return "bool";
+                case JsonTypeEnum.Boolean: return "boolean";
                 case JsonTypeEnum.Integer:
                 case JsonTypeEnum.Long:
                 case JsonTypeEnum.Float: return "number";
@@ -32,7 +32,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 case JsonTypeEnum.NullableInteger:
                 case JsonTypeEnum.NullableLong:
                 case JsonTypeEnum.NullableFloat: return "number";
-                case JsonTypeEnum.NullableBoolean: return "bool";
+                case JsonTypeEnum.NullableBoolean: return "boolean";
                 case JsonTypeEnum.NullableDate: return "Date";
                 case JsonTypeEnum.Object: return type.AssignedName;
                 case JsonTypeEnum.Array: return GetTypeName(type.InternalType, config) + "[]";
